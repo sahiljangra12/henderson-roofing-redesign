@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DM Henderson Roofing Ltd. — Redesign Concept</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="DM Henderson Roofing Ltd. — roofing, bridge & parkade waterproofing and custom sheet metal fabrication in the Peace Region since 1963.">
+<link rel="icon" href="https://hendersonroofing.com/wp-content/uploads/2025/10/DMH_SiteIcon-300x300.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#000;--fg:#fff;--muted:rgba(255,255,255,.62);--line:rgba(255,255,255,.16);
+  --accent:#db2722;--panel:#0a0a0b;
+  --u:"https://hendersonroofing.com/wp-content/uploads/";
+  --ease:cubic-bezier(.76,0,.24,1);--out:cubic-bezier(.2,.75,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.locked{overflow:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.cond{font-family:"Barlow Condensed",Inter,sans-serif;text-transform:uppercase;letter-spacing:.04em}
+.ph{background-color:#141414;background-image:linear-gradient(135deg,#1b1b1b,#0c0c0c)}
+
+/* ===== LOADER ===== */
+#loader{position:fixed;inset:0;z-index:200;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:transform 1.1s var(--ease) .1s}
+#loader.done{transform:translateY(-100%)}
+#loader .lg{width:min(320px,70vw);opacity:0;transform:translateY(16px);animation:lgIn 1s var(--out) .2s forwards}
+#loader .lg img{width:100%;filter:brightness(0) invert(1)}
+#loader .bar{width:min(320px,70vw);height:2px;background:var(--line);position:relative;overflow:hidden}
+#loader .bar i{position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left;animation:barGo 1.6s var(--ease) .4s forwards}
+#loader .tag{font-family:"Barlow Condensed";letter-spacing:.4em;font-size:12px;color:var(--muted);opacity:0;animation:fade .8s .9s forwards}
+@keyframes lgIn{to{opacity:1;transform:none}}
+@keyframes barGo{to{transform:scaleX(1)}}
+@keyframes fade{to{opacity:1}}
+
+/* ===== PROGRESS ===== */
+#prog{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;z-index:70}
+
+/* ===== NAV ===== */
+header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px clamp(16px,4vw,48px);transition:transform .5s var(--ease),background .4s,padding .4s}
+header.hide{transform:translateY(-110%)}
+header.solid{background:linear-gradient(#000d,#0000);padding-top:14px;padding-bottom:14px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{height:44px;width:auto;filter:brightness(0) invert(1);transition:height .4s}
+header.solid .brand img{height:36px}
+.brand .txt{display:none;font-family:"Barlow Condensed";font-weight:700;letter-spacing:.14em;font-size:20px}
+.brand.noimg img{display:none}.brand.noimg .txt{display:block}
+nav.main{display:flex;gap:30px;align-items:center}
+nav.main a{font-family:"Barlow Condensed";font-weight:600;font-size:15px;letter-spacing:.14em;text-transform:uppercase;position:relative;padding:4px 0}
+nav.main a::after{content:"";position:absolute;left:0;bottom:-3px;height:2px;width:100%;background:var(--fg);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+nav.main a:hover::after{transform:scaleX(1);transform-origin:left}
+nav.main a.cta{border:1px solid #fff;padding:9px 16px}
+nav.main a.cta::after{display:none}
+nav.main a.cta:hover{background:#fff;color:#000}
+.burger{display:none;background:none;border:0;width:32px;height:22px;position:relative;cursor:pointer}
+.burger i{position:absolute;left:0;right:0;height:2px;background:#fff;transition:.3s}
+.burger i:nth-child(1){top:0}.burger i:nth-child(2){top:10px}.burger i:nth-child(3){top:20px}
+.drawer{position:fixed;top:0;right:0;height:100vh;width:min(400px,100%);background:#000;border-left:1px solid var(--line);z-index:60;transform:translateX(100%);transition:transform .6s var(--ease);padding:96px 40px;display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer a{font-family:"Barlow Condensed";font-size:24px;letter-spacing:.12em;text-transform:uppercase;padding:14px 0;border-bottom:1px solid var(--line);opacity:0;transform:translateX(30px);transition:opacity .5s,transform .5s var(--out)}
+.drawer.open a{opacity:1;transform:none}
+.drawer.open a:nth-of-type(1){transition-delay:.15s}.drawer.open a:nth-of-type(2){transition-delay:.2s}.drawer.open a:nth-of-type(3){transition-delay:.25s}.drawer.open a:nth-of-type(4){transition-delay:.3s}.drawer.open a:nth-of-type(5){transition-delay:.35s}.drawer.open a:nth-of-type(6){transition-delay:.4s}.drawer.open a:nth-of-type(7){transition-delay:.45s}.drawer.open a:nth-of-type(8){transition-delay:.5s}
+.drawer .close{position:absolute;top:24px;right:28px;font-size:32px;background:none;border:0;color:#fff;cursor:pointer;transition:transform .4s}
+.drawer .close:hover{transform:rotate(90deg)}
+.scrim{position:fixed;inset:0;background:#000a;z-index:55;opacity:0;pointer-events:none;transition:.5s}
+.scrim.show{opacity:1;pointer-events:auto}
+
+/* ===== TYPE / BUTTONS ===== */
+.eyebrow{font-family:"Barlow Condensed";font-weight:500;font-size:14px;letter-spacing:.32em;color:var(--muted);margin-bottom:16px;display:flex;align-items:center;gap:12px;text-transform:uppercase}
+.eyebrow::before{content:"";width:30px;height:2px;background:var(--accent)}
+h1,h2{font-family:"Barlow Condensed";font-weight:700;text-transform:uppercase;line-height:.92}
+h1{font-size:clamp(56px,10vw,140px)}
+h2{font-size:clamp(42px,6.4vw,88px)}
+.lede{margin-top:22px;color:rgba(255,255,255,.84);font-size:clamp(15px,1.3vw,18px);line-height:1.65;font-weight:300;max-width:540px}
+/* split-word reveal */
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.04em}
+.split .w>span{display:inline-block;transform:translateY(105%);transition:transform 1.1s var(--out)}
+.split.in .w>span{transform:none}
+.btn{display:inline-flex;align-items:center;gap:14px;margin-top:36px;border:2px solid #fff;padding:16px 32px;font-family:"Barlow Condensed";font-weight:600;font-size:15px;letter-spacing:.22em;text-transform:uppercase;position:relative;overflow:hidden;isolation:isolate;transition:color .4s;cursor:pointer;background:none;color:#fff}
+.btn::before{content:"";position:absolute;inset:0;background:#fff;transform:translateY(101%);transition:transform .45s var(--ease);z-index:-1}
+.btn:hover{color:#000}.btn:hover::before{transform:none}
+.btn .arr{display:inline-block;transition:transform .4s var(--ease)}
+.btn:hover .arr{transform:translateX(6px)}
+.btn.red{border-color:var(--accent);background:var(--accent)}
+.btn-row{display:flex;flex-wrap:wrap;gap:16px}
+
+/* ===== REVEAL ===== */
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1.1s ease,transform 1.1s var(--out)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.12s!important}.d2{transition-delay:.24s!important}.d3{transition-delay:.36s!important}.d4{transition-delay:.48s!important}
+
+/* ===== HERO ===== */
+#hero{position:relative;height:100vh;min-height:620px;overflow:hidden;display:flex;align-items:flex-end;padding:0 clamp(16px,6vw,96px) clamp(80px,14vh,150px)}
+.slides{position:absolute;inset:0}
+.slide{position:absolute;inset:0;background:#111 center/cover no-repeat;opacity:0;transition:opacity 1.8s ease;transform:scale(1.12)}
+.slide.on{opacity:1;animation:kb 9s linear forwards}
+@keyframes kb{from{transform:scale(1.14) translate(0,0)}to{transform:scale(1.02) translate(-1.5%,-1%)}}
+#hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0006 0%,#0000 35%,#000d 100%);pointer-events:none}
+#hero .content{position:relative;z-index:2;max-width:720px}
+.dots{position:absolute;right:clamp(16px,6vw,96px);bottom:clamp(80px,14vh,150px);z-index:3;display:flex;flex-direction:column;gap:14px}
+.dots button{width:44px;height:2px;border:0;background:var(--line);position:relative;cursor:pointer;overflow:hidden}
+.dots button i{position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left}
+.dots button.on i{animation:dotfill 6s linear forwards}
+@keyframes dotfill{to{transform:scaleX(1)}}
+.scrollcue{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);z-index:3;font-family:"Barlow Condensed";font-size:12px;letter-spacing:.32em;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:10px}
+.scrollcue i{width:1px;height:42px;background:linear-gradient(#fff,transparent);animation:drop 2.2s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ===== STATS ===== */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:clamp(40px,6vw,76px) clamp(16px,3vw,40px);border-right:1px solid var(--line);position:relative;overflow:hidden}
+.stat:last-child{border-right:0}
+.stat::before{content:"";position:absolute;left:0;top:0;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 1.4s var(--ease)}
+.stat.in::before{transform:scaleX(1)}
+.stat .n{font-family:"Barlow Condensed";font-weight:700;font-size:clamp(52px,6.4vw,96px);line-height:1}
+.stat .n sup{font-size:.36em;color:var(--accent);vertical-align:top;margin-left:6px;letter-spacing:.1em}
+.stat .l{font-family:"Barlow Condensed";font-size:14px;letter-spacing:.26em;color:var(--muted);margin-top:12px;text-transform:uppercase}
+
+/* ===== FULLSCREEN PANELS ===== */
+.panel{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding:0 clamp(16px,6vw,96px) clamp(70px,13vh,150px);overflow:hidden}
+.panel .bg{position:absolute;inset:-8% 0;background:#111 center/cover no-repeat;transform:translateY(var(--py,0)) scale(var(--sc,1.15));clip-path:inset(0 0 100% 0);transition:clip-path 1.5s var(--ease),transform .1s linear;will-change:transform}
+.panel.in .bg{clip-path:inset(0 0 0 0)}
+.panel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0005 0%,#0000 35%,#000e 100%);pointer-events:none}
+.panel.right{justify-content:flex-end}
+.panel .content{position:relative;z-index:2;max-width:640px}
+.panel .idx{position:absolute;top:clamp(90px,14vh,140px);right:clamp(16px,6vw,96px);z-index:2;font-family:"Barlow Condensed";font-weight:800;font-size:clamp(90px,16vw,230px);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.28);opacity:0;transform:translateY(60px);transition:opacity 1.4s,transform 1.4s var(--out)}
+.panel.right .idx{right:auto;left:clamp(16px,6vw,96px)}
+.panel.in .idx{opacity:1;transform:none}
+.specs{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap}
+.specs div{border-left:2px solid var(--accent);padding-left:12px}
+.specs b{display:block;font-family:"Barlow Condensed";font-size:22px;letter-spacing:.04em;text-transform:uppercase}
+.specs span{font-size:12px;color:var(--muted);letter-spacing:.2em;font-family:"Barlow Condensed";text-transform:uppercase}
+
+/* ===== MARQUEE ===== */
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#000;padding:22px 0}
+.mq-track{display:flex;gap:14px;width:max-content;animation:mq 60s linear infinite}
+.marquee:hover .mq-track{animation-play-state:paused}
+.mq-track .m{width:clamp(220px,26vw,360px);aspect-ratio:3/2;background:#151515 center/cover;filter:grayscale(1) contrast(1.1);transition:filter .6s}
+.mq-track .m:hover{filter:none}
+@keyframes mq{to{transform:translateX(-50%)}}
+.mq-text{display:flex;gap:60px;width:max-content;animation:mq 40s linear infinite reverse;font-family:"Barlow Condensed";font-weight:800;font-size:clamp(40px,7vw,96px);text-transform:uppercase;line-height:1;padding:28px 0;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.35)}
+.mq-text span:nth-child(even){color:var(--accent);-webkit-text-stroke:0}
+
+/* ===== MISSION ===== */
+.mission{position:relative;padding:clamp(100px,16vh,180px) clamp(16px,6vw,96px);text-align:center;overflow:hidden}
+.mission .glow{position:absolute;left:50%;bottom:-40%;width:120vw;height:80vh;transform:translateX(-50%);background:radial-gradient(ellipse,#db272255 0%,#db272200 60%);animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{50%{opacity:.5;transform:translateX(-50%) scale(1.1)}}
+.mission .content{position:relative}
+.mission h2{max-width:1080px;margin:0 auto}
+.mission h2 .r>span{color:var(--accent)}
+.mission p{margin:28px auto 0;max-width:640px;color:var(--muted);line-height:1.75;font-weight:300}
+.mission .eyebrow{justify-content:center}
+
+/* ===== PROJECTS ===== */
+.projects{padding:clamp(90px,13vh,150px) clamp(16px,6vw,96px);background:var(--panel)}
+.head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+.tabs{display:flex;border:1px solid var(--line);position:relative}
+.tabs button{position:relative;z-index:1;background:none;color:var(--muted);border:0;padding:12px 22px;font-family:"Barlow Condensed";font-weight:600;letter-spacing:.18em;font-size:14px;text-transform:uppercase;cursor:pointer;transition:color .35s}
+.tabs button.on{color:#000}
+.tabs .pill{position:absolute;top:0;bottom:0;left:0;background:#fff;transition:left .45s var(--ease),width .45s var(--ease)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(200px,22vw,320px);gap:6px}
+.tile{position:relative;overflow:hidden;cursor:zoom-in;background:#151515}
+.tile.w2{grid-column:span 2}.tile.h2{grid-row:span 2}
+.tile .im{position:absolute;inset:0;background:#151515 center/cover;transition:transform 1.4s var(--out),filter .6s}
+.tile:hover .im{transform:scale(1.08)}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,#000d);transition:opacity .5s}
+.tile .cap{position:absolute;left:22px;right:22px;bottom:20px;z-index:2;transform:translateY(10px);transition:transform .6s var(--out)}
+.tile:hover .cap{transform:none}
+.tile .cap small{font-family:"Barlow Condensed";letter-spacing:.26em;font-size:12px;color:var(--muted);text-transform:uppercase}
+.tile .cap h3{font-family:"Barlow Condensed";font-size:clamp(20px,2vw,28px);text-transform:uppercase;letter-spacing:.04em;margin-top:4px}
+.tile .cap .plus{position:absolute;right:0;bottom:4px;width:34px;height:34px;border:1px solid #fff;display:grid;place-items:center;font-size:20px;opacity:0;transform:rotate(-90deg);transition:.5s var(--out)}
+.tile:hover .cap .plus{opacity:1;transform:none}
+.tile.gone{display:none}
+.tile.pop{animation:pop .7s var(--out)}
+@keyframes pop{from{opacity:0;transform:scale(.94)}}
+
+/* ===== LIGHTBOX ===== */
+.lb{position:fixed;inset:0;z-index:120;background:#000f;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .5s}
+.lb.open{opacity:1;pointer-events:auto}
+.lb img{max-width:90vw;max-height:80vh;object-fit:contain;transform:scale(.92);transition:transform .6s var(--out)}
+.lb.open img{transform:none}
+.lb .cap{position:absolute;left:0;right:0;bottom:28px;text-align:center;font-family:"Barlow Condensed";letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.lb button{position:absolute;background:none;border:1px solid var(--line);color:#fff;width:52px;height:52px;font-size:22px;cursor:pointer;transition:background .3s}
+.lb button:hover{background:#fff;color:#000}
+.lb .x{top:24px;right:24px}.lb .pv{left:24px;top:50%}.lb .nx{right:24px;top:50%}
+
+/* ===== TIMELINE ===== */
+.timeline{padding:clamp(90px,13vh,150px) clamp(16px,6vw,96px);background:#000;display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(40px,6vw,100px);align-items:center}
+.timeline .photo{position:relative;aspect-ratio:4/5;overflow:hidden}
+.timeline .photo .im{position:absolute;inset:0;background:#151515 center/cover;transform:scale(1.25);transition:transform 2s var(--out)}
+.timeline .photo.in .im{transform:scale(1)}
+.timeline .photo .curtain{position:absolute;inset:0;background:var(--accent);transform-origin:right;transition:transform 1.2s var(--ease) .1s}
+.timeline .photo.in .curtain{transform:scaleX(0)}
+.track{position:relative;margin-top:44px;padding-left:34px}
+.track::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:var(--line)}
+.track .fill{position:absolute;left:5px;top:8px;width:3px;background:var(--accent);height:0;transition:height 2.4s var(--out)}
+.track.in .fill{height:calc(100% - 16px)}
+.node{position:relative;padding-bottom:40px}
+.node:last-child{padding-bottom:0}
+.node::before{content:"";position:absolute;left:-34px;top:8px;width:15px;height:15px;border-radius:50%;background:#000;border:2px solid #fff;transition:background .5s .6s,border-color .5s .6s}
+.node.in::before{background:var(--accent);border-color:var(--accent)}
+.node .yr{font-family:"Barlow Condensed";font-weight:700;font-size:clamp(44px,5vw,64px);line-height:1}
+.node h4{font-family:"Barlow Condensed";letter-spacing:.18em;font-size:16px;text-transform:uppercase;margin:10px 0 8px}
+.node p{color:var(--muted);line-height:1.7;font-weight:300;font-size:15px;max-width:520px}
+
+/* ===== QUOTE ===== */
+.quote{display:grid;grid-template-columns:1.05fr 1fr;min-height:100vh}
+.quote .side{position:relative;overflow:hidden}
+.quote .side .im{position:absolute;inset:0;background:#111 center/cover;animation:kb 18s ease-in-out infinite alternate}
+.quote .side::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0000 40%,#000)}
+.quote .form{padding:clamp(70px,11vh,130px) clamp(16px,5vw,80px);display:flex;flex-direction:column;justify-content:center}
+.field{position:relative;margin-top:28px}
+.field input,.field select,.field textarea{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line);color:#fff;padding:14px 0 10px;font:inherit;font-size:16px;outline:none;border-radius:0}
+.field select option{background:#000}
+.field textarea{resize:vertical;min-height:84px}
+.field .ln{position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.field input:focus~.ln,.field textarea:focus~.ln,.field select:focus~.ln{transform:scaleX(1)}
+.field label{position:absolute;left:0;top:14px;color:var(--muted);font-family:"Barlow Condensed";letter-spacing:.2em;font-size:14px;text-transform:uppercase;pointer-events:none;transition:.3s var(--out)}
+.field input:focus+label,.field input:not(:placeholder-shown)+label,.field textarea:focus+label,.field textarea:not(:placeholder-shown)+label,.field select+label{top:-8px;font-size:11px;color:var(--accent)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.sent{display:none;margin-top:28px;border-left:2px solid var(--accent);padding:12px 18px;color:rgba(255,255,255,.88);animation:fade .6s}
+.or{display:flex;align-items:center;gap:16px;margin-top:44px;color:var(--muted);font-family:"Barlow Condensed";letter-spacing:.32em;font-size:13px}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+.phone{font-family:"Barlow Condensed";font-weight:700;font-size:clamp(38px,4.4vw,58px);letter-spacing:.04em;margin-top:16px;display:inline-block;transition:color .3s,letter-spacing .5s var(--out)}
+.phone:hover{color:var(--accent);letter-spacing:.08em}
+
+/* ===== FOOTER ===== */
+footer{border-top:1px solid var(--line);padding:64px clamp(16px,6vw,96px) 40px;background:#000}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px}
+footer .flogo img{height:56px;width:auto;filter:brightness(0) invert(1)}
+footer h5{font-family:"Barlow Condensed";letter-spacing:.26em;font-size:13px;color:var(--muted);text-transform:uppercase;margin-bottom:16px;font-weight:500}
+footer li{list-style:none;margin:10px 0;font-size:14px;color:rgba(255,255,255,.8);line-height:1.5}
+footer li a{transition:color .3s}footer li a:hover{color:var(--accent)}
+.assoc{display:flex;gap:22px;flex-wrap:wrap;align-items:center;margin-top:26px}
+.assoc img{height:38px;width:auto;opacity:.7;transition:opacity .3s}
+.assoc a:hover img,.assoc img:hover{opacity:1}
+.legal{margin-top:52px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:12px;font-family:"Barlow Condensed";letter-spacing:.22em;text-transform:uppercase}
+
+@media (max-width:980px){
+  nav.main{display:none}.burger{display:block}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .grid{grid-template-columns:1fr 1fr}
+  .timeline{grid-template-columns:1fr}
+  .timeline .photo{aspect-ratio:16/10}
+  .quote{grid-template-columns:1fr}
+  .quote .side{min-height:42vh}
+  .quote .side::after{background:linear-gradient(180deg,#0000 40%,#000)}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .dots{display:none}
+}
+@media (max-width:560px){
+  .grid{grid-template-columns:1fr;grid-auto-rows:240px}
+  .tile.w2{grid-column:span 1}.tile.h2{grid-row:span 1}
+  .two{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr}
+  .brand img{height:36px}
+  .panel .idx{font-size:90px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}.split .w>span{transform:none}
+  .panel .bg{clip-path:none}#loader{display:none}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="lg"><img src="https://hendersonroofing.com/wp-content/uploads/2023/11/dm-henderson-roofing-ltd.png" alt="DM Henderson Roofing Ltd."></div>
+  <div class="bar"><i></i></div>
+  <div class="tag">ROOFING · WATERPROOFING · SHEET METAL</div>
+</div>
+<div id="prog"></div>
+<div id="concept" style="position:fixed;left:0;right:0;bottom:0;z-index:150;background:#db2722;color:#fff;font:500 12px/1.4 Inter,sans-serif;letter-spacing:.06em;text-align:center;padding:8px 40px">Unofficial redesign concept — not affiliated with or endorsed by DM Henderson Roofing Ltd. Visit the official site at <a href="https://hendersonroofing.com" style="text-decoration:underline">hendersonroofing.com</a>.<button onclick="this.parentElement.remove()" aria-label="Dismiss" style="position:absolute;right:12px;top:4px;background:none;border:0;color:#fff;font-size:18px;cursor:pointer">×</button></div>
+
+
+<!-- NAV -->
+<header id="hdr">
+  <a class="brand" id="brand" href="#hero" aria-label="DM Henderson Roofing Ltd. home">
+    <img src="https://hendersonroofing.com/wp-content/uploads/2023/11/dm-henderson-roofing-ltd.png" alt="DM Henderson Roofing Ltd." onerror="this.parentElement.classList.add('noimg')">
+    <span class="txt">DM HENDERSON ROOFING LTD.</span>
+  </a>
+  <nav class="main">
+    <a href="#roofing">Roofing</a>
+    <a href="#waterproofing">Waterproofing</a>
+    <a href="#sheetmetal">Sheet Metal</a>
+    <a href="#projects">Projects</a>
+    <a href="#history">History</a>
+    <a href="#safety">Safety</a>
+    <a href="#careers">Careers</a>
+    <a href="#quote" class="cta">Get a Quote</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Open menu"><i></i><i></i><i></i></button>
+</header>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <button class="close" id="close" aria-label="Close menu">×</button>
+  <a href="#roofing">Roofing</a>
+  <a href="#waterproofing">Waterproofing</a>
+  <a href="#sheetmetal">Sheet Metal</a>
+  <a href="#projects">Projects</a>
+  <a href="#history">History</a>
+  <a href="#safety">Safety</a>
+  <a href="#careers">Careers</a>
+  <a href="#quote" style="color:var(--accent)">Request a Quote</a>
+</aside>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="slides" id="slides"></div>
+  <div class="content">
+    <div class="eyebrow rv">DM Henderson Roofing Ltd. · Since 1963</div>
+    <h1 class="split">Built for the North</h1>
+    <p class="lede rv d3">Roofing, waterproofing and custom sheet metal engineered to withstand the Peace Country's harshest seasons — across residential, commercial, institutional and industrial work.</p>
+    <div class="btn-row rv d4">
+      <a class="btn red" href="#quote">Request a Quote <span class="arr">→</span></a>
+      <a class="btn" href="#roofing">Explore Services</a>
+    </div>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="scrollcue">SCROLL<i></i></div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stat rv"><div class="n" data-count="1963" data-from="1900">1900</div><div class="l">Founded</div></div>
+  <div class="stat rv d1"><div class="n"><span data-count="63">0</span><sup>YRS</sup></div><div class="l">Serving the Peace Country</div></div>
+  <div class="stat rv d2"><div class="n" data-count="3">0</div><div class="l">Core disciplines</div></div>
+  <div class="stat rv d3"><div class="n" data-count="4">0</div><div class="l">Sectors served</div></div>
+</section>
+
+<!-- SERVICE 01 -->
+<section class="panel" id="roofing">
+  <div class="bg" data-img="2025/09/2017-03-23-KDNPSS_5-e1528926257817_upscayl_2x_upscayl-standard-4x-2048x1530.png"></div>
+  <div class="idx">01</div>
+  <div class="content">
+    <div class="eyebrow rv">Service 01 · Roofing</div>
+    <h2 class="split">Cold Weather Roofing</h2>
+    <p class="lede rv d2">Roofing systems developed and installed to stand up to the severe weather of the North — from standing seam metal on family homes to large commercial and institutional roofs.</p>
+    <div class="specs rv d3"><div><b>Residential</b><span>Homes</span></div><div><b>Commercial</b><span>&amp; Institutional</span></div><div><b>Industrial</b><span>Facilities</span></div></div>
+    <a class="btn rv d4" href="#quote">Learn More <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- TEXT MARQUEE -->
+<div class="marquee" aria-hidden="true" style="padding:0">
+  <div class="mq-text"><span>Roofing</span><span>●</span><span>Waterproofing</span><span>●</span><span>Sheet Metal</span><span>●</span><span>Since 1963</span><span>●</span><span>Roofing</span><span>●</span><span>Waterproofing</span><span>●</span><span>Sheet Metal</span><span>●</span><span>Since 1963</span><span>●</span></div>
+</div>
+
+<!-- SERVICE 02 -->
+<section class="panel right" id="waterproofing">
+  <div class="bg" data-img="2025/09/CharlieLake-24_upscayl_2x_upscayl-standard-4x.jpg"></div>
+  <div class="idx">02</div>
+  <div class="content">
+    <div class="eyebrow rv">Service 02 · Waterproofing</div>
+    <h2 class="split">Bridge &amp; Parkade Waterproofing</h2>
+    <p class="lede rv d2">Protective membrane systems for structures that carry heavy loads through freeze–thaw cycles, year after year.</p>
+    <a class="btn rv d3" href="#quote">Learn More <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- SERVICE 03 -->
+<section class="panel" id="sheetmetal">
+  <div class="bg" data-img="2025/08/2017-08-21_ShtMtlLVCU_1-scaled.jpg"></div>
+  <div class="idx">03</div>
+  <div class="content">
+    <div class="eyebrow rv">Service 03 · Fabrication</div>
+    <h2 class="split">Custom Sheet Metal Fabrication</h2>
+    <p class="lede rv d2">Flashings, cladding and architectural metal fabricated in-house, so every detail fits the building it was made for.</p>
+    <a class="btn rv d3" href="#quote">Learn More <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="mission">
+  <div class="glow"></div>
+  <div class="content">
+    <div class="eyebrow rv">Our Mission</div>
+    <h2 class="split" data-red="On,time,budget.">Safe. High quality. On time and on budget.</h2>
+    <p class="rv d2">DM Henderson Roofing Ltd. is a bondable, full-service firm. Every project is delivered against the same standard — from a family home in Dawson Creek to an industrial site in the field.</p>
+  </div>
+</section>
+
+<!-- PHOTO MARQUEE -->
+<div class="marquee"><div class="mq-track" id="mq"></div></div>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="head-row">
+    <div>
+      <div class="eyebrow rv">Recent Work</div>
+      <h2 class="split">Projects</h2>
+    </div>
+    <div class="tabs rv d2" id="tabs" role="tablist">
+      <span class="pill" id="pill"></span>
+      <button class="on" data-f="all">All</button>
+      <button data-f="res">Residential</button>
+      <button data-f="com">Commercial &amp; Institutional</button>
+    </div>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<!-- HISTORY -->
+<section class="timeline" id="history">
+  <div class="photo rv" id="hphoto">
+    <div class="im" data-img="2025/08/dm-henderson-staff.jpg"></div>
+    <div class="curtain"></div>
+  </div>
+  <div>
+    <div class="eyebrow rv">Our History</div>
+    <h2 class="split">Six decades overhead</h2>
+    <div class="track" id="track">
+      <div class="fill"></div>
+      <div class="node rv"><div class="yr">1963</div><h4>The Beginning</h4><p>John van Spronsen, a young entrepreneur who immigrated from Holland, learns the roofing trade and founds Bond-A-Ply Roofing Ltd.</p></div>
+      <div class="node rv d1"><div class="yr">1974</div><h4>DM Henderson Roofing</h4><p>John expands the operation and purchases DM Henderson Roofing. His passion, vision and integrity build it into the reputable business it is today.</p></div>
+      <div class="node rv d2"><div class="yr">Today</div><h4>Full-Service Firm</h4><p>Roofing, waterproofing and sheet metal fabrication across the residential, commercial, institutional and industrial sectors.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SAFETY -->
+<section class="panel right" id="safety">
+  <div class="bg" data-img="2025/08/OilGas-2.jpg"></div>
+  <div class="content">
+    <div class="eyebrow rv">Safety</div>
+    <h2 class="split">Safety is the core</h2>
+    <p class="lede rv d2">The safety of our employees, the public and the environment is our highest priority — from the CEO through to the supervisors, foremen and workers on site. Our policies meet or exceed BC and Alberta Occupational Health and Safety requirements.</p>
+    <div class="specs rv d3"><div><b>BC</b><span>OHS compliant</span></div><div><b>Alberta</b><span>OHS compliant</span></div></div>
+    <a class="btn rv d4" href="#quote">Our Program <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- CAREERS -->
+<section class="panel" id="careers">
+  <div class="bg" data-img="2025/08/2017-08-14-KDFRANK-ROSS_3-e1528925058189.jpg"></div>
+  <div class="content">
+    <div class="eyebrow rv">Careers</div>
+    <h2 class="split">Join the crew</h2>
+    <p class="lede rv d2">From the office to the field, DM Henderson Roofing Ltd. is a great place to work. Build a career with a team that has protected the Peace Country since 1963.</p>
+    <a class="btn rv d3" href="#quote">Work With Us <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote" id="quote">
+  <div class="side"><div class="im" data-img="2025/09/MargaretMaMurray-14_upscayl_2x_upscayl-standard-4x.png"></div></div>
+  <div class="form">
+    <div class="eyebrow rv">Get Started</div>
+    <h2 class="split">Request a Quote</h2>
+    <form id="qf" class="rv d2" onsubmit="return false">
+      <div class="two">
+        <div class="field"><input id="n" placeholder=" " required><label for="n">Name</label><span class="ln"></span></div>
+        <div class="field"><input id="p" type="tel" placeholder=" "><label for="p">Phone</label><span class="ln"></span></div>
+      </div>
+      <div class="field"><input id="e" type="email" placeholder=" " required><label for="e">Email</label><span class="ln"></span></div>
+      <div class="field">
+        <select id="s"><option>Roofing</option><option>Bridge &amp; Parkade Waterproofing</option><option>Custom Sheet Metal Fabrication</option></select>
+        <label for="s">Service</label><span class="ln"></span>
+      </div>
+      <div class="field"><textarea id="m" placeholder=" "></textarea><label for="m">Project details</label><span class="ln"></span></div>
+      <button class="btn red" type="submit">Submit Request <span class="arr">→</span></button>
+      <div class="sent" id="sent">This is a concept page, so nothing was sent. To request a quote, call 250-782-3467 or email info@hendersonroofing.com.</div>
+    </form>
+    <div class="or rv">OR CALL</div>
+    <a class="phone rv" href="tel:2507823467">250-782-3467</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fgrid">
+    <div>
+      <a class="flogo" href="#hero"><img src="https://hendersonroofing.com/wp-content/uploads/2023/11/dm-henderson-roofing-ltd.png" alt="DM Henderson Roofing Ltd."></a>
+      <p style="color:var(--muted);font-size:14px;line-height:1.75;margin-top:18px;max-width:330px">Your trusted roofing partner in the Peace Region since 1963.</p>
+      <div class="assoc">
+        <a href="https://www.rcabc.org/" target="_blank" rel="noopener"><img src="https://hendersonroofing.com/wp-content/uploads/2023/11/rcabc-logo-white.png" alt="RCABC"></a>
+        <a href="https://www.rcabc.org/roofstar-guarantee/" target="_blank" rel="noopener"><img src="https://hendersonroofing.com/wp-content/uploads/2023/11/roofstar-logo-white.png" alt="RoofStar"></a>
+        <img src="https://hendersonroofing.com/wp-content/uploads/2023/11/crca-acec-logo-white-1.png" alt="CRCA">
+      </div>
+    </div>
+    <div><h5>Services</h5><ul><li><a href="#roofing">Roofing</a></li><li><a href="#waterproofing">Bridge &amp; Parkade Waterproofing</a></li><li><a href="#sheetmetal">Custom Sheet Metal</a></li></ul></div>
+    <div><h5>Company</h5><ul><li><a href="#history">History</a></li><li><a href="#projects">Projects</a></li><li><a href="#safety">Safety</a></li><li><a href="#careers">Careers</a></li></ul></div>
+    <div><h5>Contact</h5><ul><li>8281 Harper Drive<br>Dawson Creek, BC</li><li>Box 328, Dawson Creek, BC V1G 4G9</li><li><a href="tel:2507823467">250-782-3467</a></li><li><a href="mailto:info@hendersonroofing.com">info@hendersonroofing.com</a></li></ul></div>
+  </div>
+  <div class="legal"><span>© 2026 DM Henderson Roofing Ltd. All rights reserved.</span><span>Redesign concept</span></div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb"><button class="x" id="lbx" aria-label="Close">×</button><button class="pv" id="lbp" aria-label="Previous">←</button><img id="lbi" alt=""><button class="nx" id="lbn" aria-label="Next">→</button><div class="cap" id="lbc"></div></div>
+
+<script>
+const U="https://hendersonroofing.com/wp-content/uploads/";
+const IMG={
+  seam:"2025/08/Standing-Seam-Example-2-scaled-1.jpg",
+  school:"2025/09/2017-03-23-KDNPSS_5-e1528926257817_upscayl_2x_upscayl-standard-4x-2048x1530.png",
+  lake24:"2025/09/CharlieLake-24_upscayl_2x_upscayl-standard-4x.jpg",
+  lake53:"2025/08/CharlieLake-53.jpg",
+  metal:"2025/08/2017-08-21_ShtMtlLVCU_1-scaled.jpg",
+  decra:"2025/09/Decra-1024x765.jpg",
+  oil:"2025/08/OilGas-2.jpg",
+  city:"2025/09/CityFurniture-16_upscayl_2x_upscayl-standard-4x.jpg",
+  mm:"2025/09/MargaretMaMurray-14_upscayl_2x_upscayl-standard-4x.png",
+  frank:"2025/08/2017-08-14-KDFRANK-ROSS_3-e1528925058189.jpg",
+  staff:"2025/08/dm-henderson-staff.jpg"
+};
+const bgUrl=p=>`url("${U}${p}")`;
+
+// Apply data-img backgrounds
+document.querySelectorAll('[data-img]').forEach(el=>el.style.backgroundImage=bgUrl(el.dataset.img));
+
+// ===== Split headings into animated words =====
+document.querySelectorAll('.split').forEach(h=>{
+  const red=(h.dataset.red||'').split(',').filter(Boolean);
+  const words=h.textContent.trim().split(/\s+/);
+  h.innerHTML=words.map((w,i)=>`<span class="w${red.includes(w)?' r':''}"><span style="transition-delay:${(i*0.07).toFixed(2)}s">${w}</span></span>`).join(' ');
+});
+
+// ===== Loader =====
+window.addEventListener('load',()=>setTimeout(finishLoad,1500));
+setTimeout(finishLoad,3500); // safety
+let loaded=false;
+function finishLoad(){if(loaded)return;loaded=true;document.getElementById('loader').classList.add('done');document.body.classList.remove('locked');
+  setTimeout(()=>document.querySelectorAll('#hero .rv,#hero .split').forEach(e=>e.classList.add('in')),500);}
+
+// ===== Hero slideshow (Ken Burns) =====
+(function(){
+  const list=[IMG.seam,IMG.city,IMG.lake24,IMG.decra,IMG.school];
+  const wrap=document.getElementById('slides'),dots=document.getElementById('dots');
+  const sl=list.map(p=>{const d=document.createElement('div');d.className='slide';d.style.backgroundImage=bgUrl(p);wrap.appendChild(d);return d;});
+  const db=list.map((_,i)=>{const b=document.createElement('button');b.innerHTML='<i></i>';b.setAttribute('aria-label','Slide '+(i+1));b.onclick=()=>go(i);dots.appendChild(b);return b;});
+  let cur=-1,t;
+  function go(i){if(cur>=0){sl[cur].classList.remove('on');db[cur].classList.remove('on');}
+    cur=i;void sl[i].offsetWidth;sl[i].classList.add('on');db[i].classList.add('on');
+    clearTimeout(t);t=setTimeout(()=>go((cur+1)%sl.length),6000);}
+  go(0);
+})();
+
+// ===== Header hide, progress bar =====
+(function(){
+  const h=document.getElementById('hdr'),pr=document.getElementById('prog');let last=0;
+  addEventListener('scroll',()=>{const y=scrollY;h.classList.toggle('hide',y>last&&y>140);h.classList.toggle('solid',y>40);last=y;
+    pr.style.transform=`scaleX(${y/(document.documentElement.scrollHeight-innerHeight)})`;},{passive:true});
+})();
+
+// ===== Drawer =====
+(function(){
+  const d=document.getElementById('drawer'),s=document.getElementById('scrim');
+  const open=()=>{d.classList.add('open');s.classList.add('show');d.setAttribute('aria-hidden','false')};
+  const close=()=>{d.classList.remove('open');s.classList.remove('show');d.setAttribute('aria-hidden','true')};
+  document.getElementById('burger').onclick=open;document.getElementById('close').onclick=close;s.onclick=close;
+  d.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
+})();
+
+// ===== Photo marquee =====
+(function(){
+  const m=document.getElementById('mq');const ps=[IMG.lake53,IMG.oil,IMG.frank,IMG.decra,IMG.metal,IMG.mm,IMG.seam,IMG.city];
+  [...ps,...ps].forEach(p=>{const d=document.createElement('div');d.className='m';d.style.backgroundImage=bgUrl(p);m.appendChild(d);});
+})();
+
+// ===== Projects grid + filter + lightbox =====
+const PROJECTS=[
+  {img:IMG.seam,t:'res',cat:'Residential',name:'Standing Seam Metal',cls:'w2 h2'},
+  {img:IMG.oil,t:'com',cat:'Industrial',name:'Oil & Gas Facility',cls:''},
+  {img:IMG.lake53,t:'res',cat:'Residential',name:'Charlie Lake',cls:''},
+  {img:IMG.school,t:'com',cat:'Institutional',name:'School Roofing',cls:'w2'},
+  {img:IMG.decra,t:'res',cat:'Residential',name:'Stone-Coated Steel',cls:''},
+  {img:IMG.city,t:'com',cat:'Commercial',name:'Retail Building',cls:'h2'},
+  {img:IMG.mm,t:'com',cat:'Institutional',name:'Institutional Build',cls:'w2'},
+  {img:IMG.lake24,t:'res',cat:'Residential',name:'Lakeside Home',cls:''},
+  {img:IMG.frank,t:'com',cat:'Institutional',name:'School Re-Roof',cls:''},
+  {img:IMG.metal,t:'com',cat:'Sheet Metal',name:'Custom Fabrication',cls:'w2'}
+];
+(function(){
+  const g=document.getElementById('grid');
+  PROJECTS.forEach((p,i)=>{const d=document.createElement('div');d.className='tile rv '+p.cls+' d'+(i%4);d.dataset.t=p.t;d.dataset.i=i;
+    d.innerHTML=`<div class="im" style="background-image:${bgUrl(p.img)}"></div><div class="cap"><small>${p.cat}</small><h3>${p.name}</h3><span class="plus">+</span></div>`;
+    d.onclick=()=>openLb(i);g.appendChild(d);});
+  const tabs=[...document.querySelectorAll('#tabs button')],pill=document.getElementById('pill');
+  const place=b=>{pill.style.left=b.offsetLeft+'px';pill.style.width=b.offsetWidth+'px';};
+  tabs.forEach(b=>b.onclick=()=>{tabs.forEach(x=>x.classList.toggle('on',x===b));place(b);const f=b.dataset.f;
+    document.querySelectorAll('.tile').forEach(t=>{const show=f==='all'||t.dataset.t===f;t.classList.toggle('gone',!show);if(show){t.classList.remove('pop');void t.offsetWidth;t.classList.add('pop');}});});
+  requestAnimationFrame(()=>place(tabs[0]));addEventListener('resize',()=>place(tabs.find(b=>b.classList.contains('on'))));
+  // lightbox
+  const lb=document.getElementById('lb'),li=document.getElementById('lbi'),lc=document.getElementById('lbc');let cur=0;
+  const vis=()=>[...document.querySelectorAll('.tile:not(.gone)')].map(t=>+t.dataset.i);
+  window.openLb=i=>{cur=i;show();lb.classList.add('open');document.body.classList.add('locked');};
+  function show(){const p=PROJECTS[cur];li.src=U+p.img;li.alt=p.name;lc.textContent=p.cat+' — '+p.name;}
+  const step=d=>{const v=vis();let k=v.indexOf(cur);cur=v[(k+d+v.length)%v.length];show();};
+  const close=()=>{lb.classList.remove('open');document.body.classList.remove('locked');};
+  document.getElementById('lbx').onclick=close;document.getElementById('lbp').onclick=()=>step(-1);document.getElementById('lbn').onclick=()=>step(1);
+  lb.onclick=e=>{if(e.target===lb)close();};
+  addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1);});
+})();
+
+// ===== Reveal observers =====
+(function(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.15,rootMargin:'0px 0px -5% 0px'});
+  document.querySelectorAll('.rv:not(#hero .rv),.split:not(#hero .split),.panel,#track,.stat').forEach(el=>io.observe(el));
+  const co=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting)return;const el=e.target,end=+el.dataset.count,start=+(el.dataset.from||0),t0=performance.now(),dur=1800;
+    (function st(t){const p=Math.min((t-t0)/dur,1),v=Math.round(start+(end-start)*(1-Math.pow(1-p,4)));el.textContent=v;if(p<1)requestAnimationFrame(st);})(t0);
+    co.unobserve(el);}),{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
+})();
+
+// ===== Parallax + scale on panels =====
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const bgs=[...document.querySelectorAll('.panel .bg')];let ticking=false;
+  const tick=()=>{const vh=innerHeight;bgs.forEach(b=>{const r=b.parentElement.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;
+    const p=(r.top+r.height/2-vh/2)/vh;b.style.setProperty('--py',(p*-60).toFixed(1)+'px');b.style.setProperty('--sc',(1.12-Math.max(0,1-Math.abs(p))*0.08).toFixed(3));});ticking=false;};
+  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(tick);}},{passive:true});tick();
+})();
+
+// ===== Form =====
+document.getElementById('qf').addEventListener('submit',()=>{document.getElementById('sent').style.display='block';});
+</script>
+</body>
+</html>
