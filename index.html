@@ -166,7 +166,7 @@ h2{font-size:clamp(42px,6.4vw,88px)}
 .tabs button.on{color:#000}
 .tabs .pill{position:absolute;top:0;bottom:0;left:0;background:#fff;transition:left .45s var(--ease),width .45s var(--ease)}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(200px,22vw,320px);gap:6px}
-.tile{position:relative;overflow:hidden;cursor:zoom-in;background:#151515}
+.tile{position:relative;overflow:hidden;cursor:zoom-in;background:#151515;display:block}
 .tile.w2{grid-column:span 2}.tile.h2{grid-row:span 2}
 .tile .im{position:absolute;inset:0;background:#151515 center/cover;transition:transform 1.4s var(--out),filter .6s}
 .tile:hover .im{transform:scale(1.08)}
@@ -244,20 +244,6 @@ footer li a{transition:color .3s}footer li a:hover{color:var(--accent)}
 .legal{margin-top:52px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:12px;font-family:"Barlow Condensed";letter-spacing:.22em;text-transform:uppercase}
 
 
-/* ===== CREW SPOTLIGHT ===== */
-.crew{display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:clamp(32px,6vw,96px);align-items:center;padding:clamp(80px,12vh,140px) clamp(16px,6vw,96px);background:#000;border-top:1px solid var(--line)}
-.crew .portrait{position:relative;aspect-ratio:3/4;overflow:hidden;background:#151515}
-.crew .portrait img{width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:grayscale(1) contrast(1.05);transform:scale(1.2);transition:transform 2s var(--out),filter 1.2s ease .4s}
-.crew .portrait.in img{transform:scale(1);filter:grayscale(0)}
-.crew .portrait .curtain{position:absolute;inset:0;background:var(--accent);transform-origin:top;transition:transform 1.2s var(--ease) .1s}
-.crew .portrait.in .curtain{transform:scaleY(0)}
-.crew .portrait .frame{position:absolute;inset:14px;border:1px solid rgba(255,255,255,.35);pointer-events:none}
-.crew .role{font-family:"Barlow Condensed";letter-spacing:.3em;font-size:15px;color:var(--accent);text-transform:uppercase;margin-top:18px}
-.crew .badges{display:flex;gap:28px;flex-wrap:wrap;margin-top:30px}
-.crew .badges div{border-left:2px solid var(--accent);padding-left:12px}
-.crew .badges b{display:block;font-family:"Barlow Condensed";font-size:22px;text-transform:uppercase;letter-spacing:.04em}
-.crew .badges span{font-size:12px;color:var(--muted);letter-spacing:.2em;font-family:"Barlow Condensed";text-transform:uppercase}
-@media (max-width:820px){.crew{grid-template-columns:1fr}.crew .portrait{max-width:420px}}
 
 @media (max-width:1180px){
   nav.main{display:none}.burger{display:block}
@@ -281,6 +267,56 @@ footer li a{transition:color .3s}footer li a:hover{color:var(--accent)}
   .brand img{height:36px}
   .panel .idx{font-size:90px}
 }
+
+/* ===== ACCESSIBILITY & MOBILE POLISH ===== */
+.skip{position:fixed;left:16px;top:-60px;z-index:300;background:#fff;color:#000;padding:12px 18px;font-family:"Barlow Condensed";font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:top .3s}
+.skip:focus{top:16px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.btn:focus-visible,.tile:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.tile{border:0;padding:0;text-align:left;color:#fff;font:inherit;width:100%;height:100%}
+.dcontact{margin-top:auto;display:flex;flex-direction:column;gap:6px;padding-top:28px}
+.dcontact a{border:0!important;font-family:Inter,sans-serif!important;font-size:15px!important;letter-spacing:.02em!important;text-transform:none!important;padding:6px 0!important;color:var(--muted)}
+#hero{height:100svh}
+.panel{min-height:100svh}
+body{padding-bottom:var(--banner-h,0px)}
+@media (hover:none){.tile .cap{transform:none}.tile .cap .plus{opacity:1;transform:none}}
+@media (max-width:1180px){
+  .panel .idx{font-size:clamp(80px,22vw,160px);top:90px}
+}
+@media (max-width:700px){
+  header{padding:14px 16px}
+  .brand img{height:34px}
+  #hero{padding:0 20px 96px;min-height:560px}
+  #hero .content{max-width:100%}
+  h1{font-size:clamp(48px,15vw,72px)}
+  h2{font-size:clamp(36px,11vw,56px)}
+  .lede{font-size:15.5px}
+  .btn-row{flex-direction:column;gap:12px}
+  .btn-row .btn,.panel .btn,.quote .btn{width:100%;justify-content:center;margin-top:12px}
+  .btn-row{margin-top:24px}
+  .panel{padding:96px 20px 72px;align-items:flex-end}
+  .panel.right{justify-content:flex-start}
+  .panel .idx{display:none}
+  .panel:not(.right)::after,.panel.right::after{background:linear-gradient(180deg,#0006 0%,#0004 30%,#000e 85%)}
+  .specs{gap:18px}
+  .stat{padding:32px 18px}
+  .stat .l{font-size:12px;letter-spacing:.18em}
+  .mq-text{font-size:44px;gap:32px;padding:18px 0}
+  .mission{padding:90px 20px}
+  .projects,.timeline{padding:80px 20px}
+  .head-row{flex-direction:column;align-items:stretch}
+  .tabs{width:100%}
+  .tabs button{flex:1;padding:12px 8px;font-size:12.5px;letter-spacing:.12em}
+  .quote .form{padding:56px 20px 64px}
+  .phone{font-size:40px}
+  footer{padding:52px 20px 32px}
+  .lb button{width:48px;height:48px}
+  .lb .pv,.lb .nx{top:auto;bottom:70px}
+  .lb .pv{left:calc(50% - 60px)}.lb .nx{right:calc(50% - 60px)}
+  .lb img{max-height:65vh}
+  #concept{font-size:11px!important;padding:8px 36px 8px 12px!important;text-align:left!important}
+}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .rv{opacity:1;transform:none}.split .w>span{transform:none}
@@ -289,6 +325,7 @@ footer li a{transition:color .3s}footer li a:hover{color:var(--accent)}
 </style>
 </head>
 <body class="locked">
+<a class="skip" href="#main">Skip to content</a>
 
 <!-- LOADER -->
 <div id="loader">
@@ -297,7 +334,7 @@ footer li a{transition:color .3s}footer li a:hover{color:var(--accent)}
   <div class="tag">ROOFING · WATERPROOFING · SHEET METAL</div>
 </div>
 <div id="prog"></div>
-<div id="concept" style="position:fixed;left:0;right:0;bottom:0;z-index:150;background:#db2722;color:#fff;font:500 12px/1.4 Inter,sans-serif;letter-spacing:.06em;text-align:center;padding:8px 40px">Unofficial redesign concept — not affiliated with or endorsed by DM Henderson Roofing Ltd. Visit the official site at <a href="https://hendersonroofing.com" style="text-decoration:underline">hendersonroofing.com</a>.<button onclick="this.parentElement.remove()" aria-label="Dismiss" style="position:absolute;right:12px;top:4px;background:none;border:0;color:#fff;font-size:18px;cursor:pointer">×</button></div>
+<div id="concept" style="position:fixed;left:0;right:0;bottom:0;z-index:150;background:#db2722;color:#fff;font:500 12px/1.4 Inter,sans-serif;letter-spacing:.06em;text-align:center;padding:8px 40px">Unofficial redesign concept — not affiliated with or endorsed by DM Henderson Roofing Ltd. Visit the official site at <a href="https://hendersonroofing.com" style="text-decoration:underline">hendersonroofing.com</a>.<button onclick="this.parentElement.remove();document.body.style.setProperty('--banner-h','0px')" aria-label="Dismiss notice" style="position:absolute;right:12px;top:4px;background:none;border:0;color:#fff;font-size:18px;cursor:pointer">×</button></div>
 
 
 <!-- NAV -->
@@ -306,8 +343,7 @@ footer li a{transition:color .3s}footer li a:hover{color:var(--accent)}
     <img src="https://hendersonroofing.com/wp-content/uploads/2023/11/dm-henderson-roofing-ltd.png" alt="DM Henderson Roofing Ltd." onerror="this.parentElement.classList.add('noimg')">
     <span class="txt">DM HENDERSON ROOFING LTD.</span>
   </a>
-  <nav class="main">
-    <a href="#crew">Crew</a>
+  <nav class="main" aria-label="Main">
     <a href="#roofing">Roofing</a>
     <a href="#waterproofing">Waterproofing</a>
     <a href="#sheetmetal">Sheet Metal</a>
@@ -317,10 +353,10 @@ footer li a{transition:color .3s}footer li a:hover{color:var(--accent)}
     <a href="#careers">Careers</a>
     <a href="#quote" class="cta">Get a Quote</a>
   </nav>
-  <button class="burger" id="burger" aria-label="Open menu"><i></i><i></i><i></i></button>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><i></i><i></i><i></i></button>
 </header>
 <div class="scrim" id="scrim"></div>
-<aside class="drawer" id="drawer" aria-hidden="true">
+<aside class="drawer" id="drawer" aria-hidden="true" aria-label="Menu">
   <button class="close" id="close" aria-label="Close menu">×</button>
   <a href="#roofing">Roofing</a>
   <a href="#waterproofing">Waterproofing</a>
@@ -330,43 +366,30 @@ footer li a{transition:color .3s}footer li a:hover{color:var(--accent)}
   <a href="#safety">Safety</a>
   <a href="#careers">Careers</a>
   <a href="#quote" style="color:var(--accent)">Request a Quote</a>
+  <div class="dcontact"><a href="tel:2507823467">250-782-3467</a><a href="mailto:info@hendersonroofing.com">info@hendersonroofing.com</a></div>
 </aside>
 
+<main id="main">
 <!-- HERO -->
-<section id="hero">
+<section id="hero" aria-label="Introduction">
   <div class="slides" id="slides"></div>
   <div class="content">
     <div class="eyebrow rv">DM Henderson Roofing Ltd. · Since 1963</div>
     <h1 class="split">Built for the North</h1>
     <p class="lede rv d3">Roofing, waterproofing and custom sheet metal engineered to withstand the Peace Country's harshest seasons — across residential, commercial, institutional and industrial work.</p>
     <div class="btn-row rv d4">
-      <a class="btn red" href="#quote">Request a Quote <span class="arr">→</span></a>
+      <a class="btn red" href="#quote">Request a Quote <span class="arr" aria-hidden="true">→</span></a>
       <a class="btn" href="#roofing">Explore Services</a>
     </div>
   </div>
-  <div class="dots" id="dots"></div>
-  <div class="scrollcue">SCROLL<i></i></div>
+  <div class="dots" id="dots" role="group" aria-label="Hero slides"></div>
+  <div class="scrollcue" aria-hidden="true">SCROLL<i></i></div>
 </section>
 
 
-<!-- CREW SPOTLIGHT -->
-<section class="crew" id="crew">
-  <div class="portrait rv" id="portrait">
-    <img src="img/team-member.jpg" alt="Roofing apprentice at DM Henderson Roofing Ltd.">
-    <div class="curtain"></div><div class="frame"></div>
-  </div>
-  <div>
-    <div class="eyebrow rv">Meet the Crew</div>
-    <h2 class="split" data-name>Our Apprentice</h2>
-    <div class="role rv d1" data-role>Roofing Apprentice · DM Henderson Roofing Ltd.</div>
-    <p class="lede rv d2">Learning the trade on the job, alongside a crew that shows up in all weather. Our apprentices train on real projects — residential, commercial, institutional and industrial — and carry six decades of Peace Country know-how into the next generation.</p>
-    <div class="badges rv d3"><div><b>Since 1963</b><span>Family of workers</span></div><div><b>Safety First</b><span>BC &amp; Alberta OHS</span></div></div>
-    <a class="btn rv d4" href="#careers">Join the Crew <span class="arr">→</span></a>
-  </div>
-</section>
 
 <!-- STATS -->
-<section class="stats">
+<section class="stats" aria-label="Company at a glance">
   <div class="stat rv"><div class="n" data-count="1963" data-from="1900">1900</div><div class="l">Founded</div></div>
   <div class="stat rv d1"><div class="n"><span data-count="63">0</span><sup>YRS</sup></div><div class="l">Serving the Peace Country</div></div>
   <div class="stat rv d2"><div class="n" data-count="3">0</div><div class="l">Core disciplines</div></div>
@@ -376,13 +399,13 @@ footer li a{transition:color .3s}footer li a:hover{color:var(--accent)}
 <!-- SERVICE 01 -->
 <section class="panel" id="roofing">
   <div class="bg" data-img="2025/09/2017-03-23-KDNPSS_5-e1528926257817_upscayl_2x_upscayl-standard-4x-2048x1530.png"></div>
-  <div class="idx">01</div>
+  <div class="idx" aria-hidden="true">01</div>
   <div class="content">
     <div class="eyebrow rv">Service 01 · Roofing</div>
     <h2 class="split">Cold Weather Roofing</h2>
     <p class="lede rv d2">Roofing systems developed and installed to stand up to the severe weather of the North — from standing seam metal on family homes to large commercial and institutional roofs.</p>
     <div class="specs rv d3"><div><b>Residential</b><span>Homes</span></div><div><b>Commercial</b><span>&amp; Institutional</span></div><div><b>Industrial</b><span>Facilities</span></div></div>
-    <a class="btn rv d4" href="#quote">Learn More <span class="arr">→</span></a>
+    <a class="btn rv d4" href="#quote">Quote a Roof <span class="arr" aria-hidden="true">→</span></a>
   </div>
 </section>
 
@@ -394,24 +417,24 @@ footer li a{transition:color .3s}footer li a:hover{color:var(--accent)}
 <!-- SERVICE 02 -->
 <section class="panel right" id="waterproofing">
   <div class="bg" data-img="2025/09/CharlieLake-24_upscayl_2x_upscayl-standard-4x.jpg"></div>
-  <div class="idx">02</div>
+  <div class="idx" aria-hidden="true">02</div>
   <div class="content">
     <div class="eyebrow rv">Service 02 · Waterproofing</div>
     <h2 class="split">Bridge &amp; Parkade Waterproofing</h2>
     <p class="lede rv d2">Protective membrane systems for structures that carry heavy loads through freeze–thaw cycles, year after year.</p>
-    <a class="btn rv d3" href="#quote">Learn More <span class="arr">→</span></a>
+    <a class="btn rv d3" href="#quote">Discuss a Project <span class="arr" aria-hidden="true">→</span></a>
   </div>
 </section>
 
 <!-- SERVICE 03 -->
 <section class="panel" id="sheetmetal">
   <div class="bg" data-img="2025/08/2017-08-21_ShtMtlLVCU_1-scaled.jpg"></div>
-  <div class="idx">03</div>
+  <div class="idx" aria-hidden="true">03</div>
   <div class="content">
     <div class="eyebrow rv">Service 03 · Fabrication</div>
     <h2 class="split">Custom Sheet Metal Fabrication</h2>
     <p class="lede rv d2">Flashings, cladding and architectural metal fabricated in-house, so every detail fits the building it was made for.</p>
-    <a class="btn rv d3" href="#quote">Learn More <span class="arr">→</span></a>
+    <a class="btn rv d3" href="#quote">Request Fabrication <span class="arr" aria-hidden="true">→</span></a>
   </div>
 </section>
 
@@ -426,7 +449,7 @@ footer li a{transition:color .3s}footer li a:hover{color:var(--accent)}
 </section>
 
 <!-- PHOTO MARQUEE -->
-<div class="marquee"><div class="mq-track" id="mq"></div></div>
+<div class="marquee" aria-hidden="true"><div class="mq-track" id="mq"></div></div>
 
 <!-- PROJECTS -->
 <section class="projects" id="projects">
@@ -435,14 +458,14 @@ footer li a{transition:color .3s}footer li a:hover{color:var(--accent)}
       <div class="eyebrow rv">Recent Work</div>
       <h2 class="split">Projects</h2>
     </div>
-    <div class="tabs rv d2" id="tabs" role="tablist">
+    <div class="tabs rv d2" id="tabs" role="group" aria-label="Filter projects">
       <span class="pill" id="pill"></span>
-      <button class="on" data-f="all">All</button>
-      <button data-f="res">Residential</button>
-      <button data-f="com">Commercial &amp; Institutional</button>
+      <button class="on" data-f="all" aria-pressed="true">All</button>
+      <button data-f="res" aria-pressed="false">Residential</button>
+      <button data-f="com" aria-pressed="false">Commercial &amp; Institutional</button>
     </div>
   </div>
-  <div class="grid" id="grid"></div>
+  <div class="grid" id="grid" role="list"></div>
 </section>
 
 <!-- HISTORY -->
@@ -471,7 +494,7 @@ footer li a{transition:color .3s}footer li a:hover{color:var(--accent)}
     <h2 class="split">Safety is the core</h2>
     <p class="lede rv d2">The safety of our employees, the public and the environment is our highest priority — from the CEO through to the supervisors, foremen and workers on site. Our policies meet or exceed BC and Alberta Occupational Health and Safety requirements.</p>
     <div class="specs rv d3"><div><b>BC</b><span>OHS compliant</span></div><div><b>Alberta</b><span>OHS compliant</span></div></div>
-    <a class="btn rv d4" href="#quote">Our Program <span class="arr">→</span></a>
+    <a class="btn rv d4" href="tel:2507823467">Call the Office <span class="arr" aria-hidden="true">→</span></a>
   </div>
 </section>
 
@@ -482,7 +505,7 @@ footer li a{transition:color .3s}footer li a:hover{color:var(--accent)}
     <div class="eyebrow rv">Careers</div>
     <h2 class="split">Join the crew</h2>
     <p class="lede rv d2">From the office to the field, DM Henderson Roofing Ltd. is a great place to work. Build a career with a team that has protected the Peace Country since 1963.</p>
-    <a class="btn rv d3" href="#quote">Work With Us <span class="arr">→</span></a>
+    <a class="btn rv d3" href="mailto:info@hendersonroofing.com?subject=Career%20inquiry">Email About Careers <span class="arr" aria-hidden="true">→</span></a>
   </div>
 </section>
 
@@ -492,24 +515,26 @@ footer li a{transition:color .3s}footer li a:hover{color:var(--accent)}
   <div class="form">
     <div class="eyebrow rv">Get Started</div>
     <h2 class="split">Request a Quote</h2>
-    <form id="qf" class="rv d2" onsubmit="return false">
+    <form id="qf" class="rv d2" novalidate>
       <div class="two">
-        <div class="field"><input id="n" placeholder=" " required><label for="n">Name</label><span class="ln"></span></div>
-        <div class="field"><input id="p" type="tel" placeholder=" "><label for="p">Phone</label><span class="ln"></span></div>
+        <div class="field"><input id="n" placeholder=" " required autocomplete="name"><label for="n">Name</label><span class="ln"></span></div>
+        <div class="field"><input id="p" type="tel" placeholder=" " autocomplete="tel" inputmode="tel"><label for="p">Phone</label><span class="ln"></span></div>
       </div>
-      <div class="field"><input id="e" type="email" placeholder=" " required><label for="e">Email</label><span class="ln"></span></div>
+      <div class="field"><input id="e" type="email" placeholder=" " required autocomplete="email"><label for="e">Email</label><span class="ln"></span></div>
       <div class="field">
         <select id="s"><option>Roofing</option><option>Bridge &amp; Parkade Waterproofing</option><option>Custom Sheet Metal Fabrication</option></select>
         <label for="s">Service</label><span class="ln"></span>
       </div>
       <div class="field"><textarea id="m" placeholder=" "></textarea><label for="m">Project details</label><span class="ln"></span></div>
-      <button class="btn red" type="submit">Submit Request <span class="arr">→</span></button>
-      <div class="sent" id="sent">This is a concept page, so nothing was sent. To request a quote, call 250-782-3467 or email info@hendersonroofing.com.</div>
+      <button class="btn red" type="submit">Email My Request <span class="arr" aria-hidden="true">→</span></button>
+      <div class="sent" id="sent" role="status" aria-live="polite">Your email app should now open with the request filled in — just press send. Prefer to talk? Call 250-782-3467.</div>
     </form>
     <div class="or rv">OR CALL</div>
     <a class="phone rv" href="tel:2507823467">250-782-3467</a>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -531,7 +556,7 @@ footer li a{transition:color .3s}footer li a:hover{color:var(--accent)}
 </footer>
 
 <!-- LIGHTBOX -->
-<div class="lb" id="lb"><button class="x" id="lbx" aria-label="Close">×</button><button class="pv" id="lbp" aria-label="Previous">←</button><img id="lbi" alt=""><button class="nx" id="lbn" aria-label="Next">→</button><div class="cap" id="lbc"></div></div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Project photo viewer"><button class="x" id="lbx" aria-label="Close">×</button><button class="pv" id="lbp" aria-label="Previous">←</button><img id="lbi" alt=""><button class="nx" id="lbn" aria-label="Next">→</button><div class="cap" id="lbc"></div></div>
 
 <script>
 const U="https://hendersonroofing.com/wp-content/uploads/";
@@ -551,7 +576,9 @@ const IMG={
 const bgUrl=p=>`url("${U}${p}")`;
 
 // Apply data-img backgrounds
-document.querySelectorAll('[data-img]').forEach(el=>el.style.backgroundImage=bgUrl(el.dataset.img));
+const lazyIO=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.style.backgroundImage=bgUrl(el.dataset.img||el.dataset.lazy);lazyIO.unobserve(el);}),{rootMargin:'800px 0px'});
+function watchLazy(){document.querySelectorAll('[data-img],[data-lazy]').forEach(el=>lazyIO.observe(el));}
+watchLazy();
 
 // ===== Split headings into animated words =====
 document.querySelectorAll('.split').forEach(h=>{
@@ -561,8 +588,7 @@ document.querySelectorAll('.split').forEach(h=>{
 });
 
 // ===== Loader =====
-window.addEventListener('load',()=>setTimeout(finishLoad,1500));
-setTimeout(finishLoad,3500); // safety
+setTimeout(finishLoad,1700);
 let loaded=false;
 function finishLoad(){if(loaded)return;loaded=true;document.getElementById('loader').classList.add('done');document.body.classList.remove('locked');
   setTimeout(()=>document.querySelectorAll('#hero .rv,#hero .split').forEach(e=>e.classList.add('in')),500);}
@@ -571,7 +597,8 @@ function finishLoad(){if(loaded)return;loaded=true;document.getElementById('load
 (function(){
   const list=[IMG.seam,IMG.city,IMG.lake24,IMG.decra,IMG.school];
   const wrap=document.getElementById('slides'),dots=document.getElementById('dots');
-  const sl=list.map(p=>{const d=document.createElement('div');d.className='slide';d.style.backgroundImage=bgUrl(p);wrap.appendChild(d);return d;});
+  const sl=list.map((p,i)=>{const d=document.createElement('div');d.className='slide';d.setAttribute('aria-hidden','true');if(i===0)d.style.backgroundImage=bgUrl(p);wrap.appendChild(d);return d;});
+  addEventListener('load',()=>sl.forEach((d,i)=>{if(i)d.style.backgroundImage=bgUrl(list[i]);}));
   const db=list.map((_,i)=>{const b=document.createElement('button');b.innerHTML='<i></i>';b.setAttribute('aria-label','Slide '+(i+1));b.onclick=()=>go(i);dots.appendChild(b);return b;});
   let cur=-1,t;
   function go(i){if(cur>=0){sl[cur].classList.remove('on');db[cur].classList.remove('on');}
@@ -590,8 +617,10 @@ function finishLoad(){if(loaded)return;loaded=true;document.getElementById('load
 // ===== Drawer =====
 (function(){
   const d=document.getElementById('drawer'),s=document.getElementById('scrim');
-  const open=()=>{d.classList.add('open');s.classList.add('show');d.setAttribute('aria-hidden','false')};
-  const close=()=>{d.classList.remove('open');s.classList.remove('show');d.setAttribute('aria-hidden','true')};
+  const bg=document.getElementById('burger');
+  const open=()=>{d.classList.add('open');s.classList.add('show');d.setAttribute('aria-hidden','false');bg.setAttribute('aria-expanded','true');document.body.classList.add('locked');setTimeout(()=>d.querySelector('a').focus(),300)};
+  const close=()=>{if(!d.classList.contains('open'))return;d.classList.remove('open');s.classList.remove('show');d.setAttribute('aria-hidden','true');bg.setAttribute('aria-expanded','false');document.body.classList.remove('locked');bg.focus({preventScroll:true})};
+  addEventListener('keydown',e=>{if(e.key==='Escape')close();});
   document.getElementById('burger').onclick=open;document.getElementById('close').onclick=close;s.onclick=close;
   d.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
 })();
@@ -599,7 +628,7 @@ function finishLoad(){if(loaded)return;loaded=true;document.getElementById('load
 // ===== Photo marquee =====
 (function(){
   const m=document.getElementById('mq');const ps=[IMG.lake53,IMG.oil,IMG.frank,IMG.decra,IMG.metal,IMG.mm,IMG.seam,IMG.city];
-  [...ps,...ps].forEach(p=>{const d=document.createElement('div');d.className='m';d.style.backgroundImage=bgUrl(p);m.appendChild(d);});
+  [...ps,...ps].forEach(p=>{const d=document.createElement('div');d.className='m';d.dataset.lazy=p;m.appendChild(d);});watchLazy();
 })();
 
 // ===== Projects grid + filter + lightbox =====
@@ -617,21 +646,22 @@ const PROJECTS=[
 ];
 (function(){
   const g=document.getElementById('grid');
-  PROJECTS.forEach((p,i)=>{const d=document.createElement('div');d.className='tile rv '+p.cls+' d'+(i%4);d.dataset.t=p.t;d.dataset.i=i;
-    d.innerHTML=`<div class="im" style="background-image:${bgUrl(p.img)}"></div><div class="cap"><small>${p.cat}</small><h3>${p.name}</h3><span class="plus">+</span></div>`;
-    d.onclick=()=>openLb(i);g.appendChild(d);});
+  PROJECTS.forEach((p,i)=>{const d=document.createElement('button');d.type='button';d.setAttribute('role','listitem');d.setAttribute('aria-label','View photo: '+p.cat+', '+p.name);d.className='tile rv '+p.cls+' d'+(i%4);d.dataset.t=p.t;d.dataset.i=i;
+    d.innerHTML=`<span class="im" data-lazy="${p.img}" style="display:block"></span><span class="cap" style="display:block"><small>${p.cat}</small><h3>${p.name}</h3><span class="plus" aria-hidden="true">+</span></span>`;
+    d.onclick=()=>openLb(i);g.appendChild(d);});watchLazy();
   const tabs=[...document.querySelectorAll('#tabs button')],pill=document.getElementById('pill');
   const place=b=>{pill.style.left=b.offsetLeft+'px';pill.style.width=b.offsetWidth+'px';};
-  tabs.forEach(b=>b.onclick=()=>{tabs.forEach(x=>x.classList.toggle('on',x===b));place(b);const f=b.dataset.f;
+  tabs.forEach(b=>b.onclick=()=>{tabs.forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b)});place(b);const f=b.dataset.f;
     document.querySelectorAll('.tile').forEach(t=>{const show=f==='all'||t.dataset.t===f;t.classList.toggle('gone',!show);if(show){t.classList.remove('pop');void t.offsetWidth;t.classList.add('pop');}});});
   requestAnimationFrame(()=>place(tabs[0]));addEventListener('resize',()=>place(tabs.find(b=>b.classList.contains('on'))));
   // lightbox
   const lb=document.getElementById('lb'),li=document.getElementById('lbi'),lc=document.getElementById('lbc');let cur=0;
   const vis=()=>[...document.querySelectorAll('.tile:not(.gone)')].map(t=>+t.dataset.i);
-  window.openLb=i=>{cur=i;show();lb.classList.add('open');document.body.classList.add('locked');};
+  let lastFocus=null;window.openLb=i=>{lastFocus=document.activeElement;cur=i;show();lb.classList.add('open');document.body.classList.add('locked');setTimeout(()=>document.getElementById('lbx').focus(),50);};
+  let sx=null;lb.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});lb.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)step(dx<0?1:-1);sx=null;});
   function show(){const p=PROJECTS[cur];li.src=U+p.img;li.alt=p.name;lc.textContent=p.cat+' — '+p.name;}
   const step=d=>{const v=vis();let k=v.indexOf(cur);cur=v[(k+d+v.length)%v.length];show();};
-  const close=()=>{lb.classList.remove('open');document.body.classList.remove('locked');};
+  const close=()=>{lb.classList.remove('open');document.body.classList.remove('locked');if(lastFocus)lastFocus.focus({preventScroll:true});};
   document.getElementById('lbx').onclick=close;document.getElementById('lbp').onclick=()=>step(-1);document.getElementById('lbn').onclick=()=>step(1);
   lb.onclick=e=>{if(e.target===lb)close();};
   addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1);});
@@ -640,7 +670,7 @@ const PROJECTS=[
 // ===== Reveal observers =====
 (function(){
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.15,rootMargin:'0px 0px -5% 0px'});
-  document.querySelectorAll('.rv:not(#hero .rv),.split:not(#hero .split),.panel,#track,.stat,#portrait').forEach(el=>io.observe(el));
+  document.querySelectorAll('.rv:not(#hero .rv),.split:not(#hero .split),.panel,#track,.stat').forEach(el=>io.observe(el));
   const co=new IntersectionObserver(es=>es.forEach(e=>{
     if(!e.isIntersecting)return;const el=e.target,end=+el.dataset.count,start=+(el.dataset.from||0),t0=performance.now(),dur=1800;
     (function st(t){const p=Math.min((t-t0)/dur,1),v=Math.round(start+(end-start)*(1-Math.pow(1-p,4)));el.textContent=v;if(p<1)requestAnimationFrame(st);})(t0);
@@ -657,8 +687,15 @@ const PROJECTS=[
   addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(tick);}},{passive:true});tick();
 })();
 
+// ===== Banner spacing =====
+(function(){const c=document.getElementById('concept');if(!c)return;const f=()=>document.body.style.setProperty('--banner-h',c.isConnected?c.offsetHeight+'px':'0px');f();addEventListener('resize',f);})();
+
 // ===== Form =====
-document.getElementById('qf').addEventListener('submit',()=>{document.getElementById('sent').style.display='block';});
+document.getElementById('qf').addEventListener('submit',e=>{e.preventDefault();const f=e.target;if(!f.reportValidity())return;
+  const v=id=>document.getElementById(id).value.trim();
+  const body=`Name: ${v('n')}\nPhone: ${v('p')}\nEmail: ${v('e')}\nService: ${v('s')}\n\nProject details:\n${v('m')}`;
+  location.href='mailto:info@hendersonroofing.com?subject='+encodeURIComponent('Quote request — '+v('s'))+'&body='+encodeURIComponent(body);
+  document.getElementById('sent').style.display='block';});
 </script>
 </body>
 </html>
