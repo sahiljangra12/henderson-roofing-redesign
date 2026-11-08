@@ -652,8 +652,8 @@ const PROJECTS=[
 (function(){
   const g=document.getElementById('grid');
   PROJECTS.forEach((p,i)=>{const d=document.createElement('button');d.type='button';d.setAttribute('role','listitem');d.setAttribute('aria-label','View photo: '+p.cat+', '+p.name);d.className='tile '+p.cls;d.dataset.t=p.t;d.dataset.i=i;
-    d.innerHTML=`<span class="im" style="display:block;background-image:${bgUrl(p.img)}"></span><span class="cap" style="display:block"><small>${p.cat}</small><h3>${p.name}</h3><span class="plus" aria-hidden="true">+</span></span>`;
-    d.onclick=()=>openLb(i);g.appendChild(d);});
+    d.innerHTML=`<span class="im" style="display:block"></span><span class="cap" style="display:block"><small>${p.cat}</small><h3>${p.name}</h3><span class="plus" aria-hidden="true">+</span></span>`;
+    d.querySelector('.im').style.backgroundImage=bgUrl(p.img);d.onclick=()=>openLb(i);g.appendChild(d);});
   PROJECTS.forEach(p=>{const im=new Image();im.decoding='async';im.src=U+p.img;});
   const gio=new IntersectionObserver(es=>{if(es[0].isIntersecting){g.classList.add('shown');gio.disconnect();}},{threshold:.05});gio.observe(g);setTimeout(()=>g.classList.add('shown'),2600);
   const tabs=[...document.querySelectorAll('#tabs button')],pill=document.getElementById('pill');
