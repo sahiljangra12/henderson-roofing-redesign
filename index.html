@@ -655,7 +655,7 @@ const PROJECTS=[
     d.innerHTML=`<span class="im" style="display:block;background-image:${bgUrl(p.img)}"></span><span class="cap" style="display:block"><small>${p.cat}</small><h3>${p.name}</h3><span class="plus" aria-hidden="true">+</span></span>`;
     d.onclick=()=>openLb(i);g.appendChild(d);});
   PROJECTS.forEach(p=>{const im=new Image();im.decoding='async';im.src=U+p.img;});
-  const gio=new IntersectionObserver(es=>{if(es[0].isIntersecting){g.classList.add('shown');gio.disconnect();}},{threshold:.05});gio.observe(g);
+  const gio=new IntersectionObserver(es=>{if(es[0].isIntersecting){g.classList.add('shown');gio.disconnect();}},{threshold:.05});gio.observe(g);setTimeout(()=>g.classList.add('shown'),2600);
   const tabs=[...document.querySelectorAll('#tabs button')],pill=document.getElementById('pill');
   const place=b=>{pill.style.left=b.offsetLeft+'px';pill.style.width=b.offsetWidth+'px';};
   tabs.forEach(b=>b.onclick=()=>{tabs.forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b)});place(b);const f=b.dataset.f;
